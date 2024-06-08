@@ -1,0 +1,8 @@
+<div class="toogle-container">
+    <button mat-icon-button (click)="toggleTheme()">
+      <mat-icon [ngClass]="isDarkMode ? 'light-icon' : 'dark-icon'">{{
+        isDarkMode ? 'wb_sunny' : 'nights_stay'
+      }}</mat-icon>
+    </button>
+  </div>
+  

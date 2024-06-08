@@ -1,0 +1,30 @@
+.todo-scroll-container {
+    width: 1118px;
+    height: 706px;
+    padding: 0px 28px 0px 28px;
+    gap: 32px;
+    border-radius: 12px;
+    opacity: 0px;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+  }
+  
+  .todo-wrapper {
+    width: 1130px;
+    height: 770px;
+    gap: 0px;
+    border-radius: 24px;
+    opacity: 0px;
+    background: #ffffff99;
+    margin: 32px;
+    border: 1px solid #ffffff;
+  }
+  
+  .todo-list {
+    width: 640px;
+    height: 100%;
+    gap: 16px;
+    opacity: 0px;
+  }
+  

@@ -1,0 +1,43 @@
+<div class="todo-item-container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="todoForm">
+      <div class="check-container">
+        <div class="checkbox-wrapper">
+          <input
+            type="checkbox"
+            [checked]="todoItem.completed"
+            (change)="todoItem.completed = !todoItem.completed"
+            [value]="todoItem.completed"
+            class="promoted-input-checkbox"
+          />
+          <svg><use xlink:href="#checkmark-28" /></svg>
+          <label for="todo-check"></label>
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+            <symbol id="checkmark-28" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                fill="none"
+                d="M22.9 3.7l-15.2 16.6-6.6-7.1"
+              ></path>
+            </symbol>
+          </svg>
+        </div>
+      </div>
+      <div >
+       <span class="todo-text">
+         {{todoItem.title}}
+       </span>
+      </div>
+      <div class="new-todo-item" *ngIf="isTodoEdited">
+        <input
+          formControlName="inputControl"
+          placeholder="Review Figma Design"
+          class="input-item"
+        />
+        <div *ngIf="todoForm.controls['inputControl'].valid">
+          <button type="submit" class="create-btn-item">Edit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
