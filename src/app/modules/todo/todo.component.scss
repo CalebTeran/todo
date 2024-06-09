@@ -1,7 +1,8 @@
-.todo-scroll-container {
+
+@media only screen and (min-width: 600px) {
+  .todo-scroll-container {
     width: 1118px;
     height: 706px;
-    padding: 0px 28px 0px 28px;
     gap: 32px;
     border-radius: 12px;
     opacity: 0px;
@@ -26,5 +27,35 @@
     height: 100%;
     gap: 16px;
     opacity: 0px;
-  }
+  } 
+}
+
   
+  @media only screen and (max-width: 600px) {
+    .todo-scroll-container {
+      width: 356px;
+      height: 656px;
+      gap: 32px;
+      border-radius: 12px;
+      opacity: 0px;
+      display: flex;
+      justify-content: center;
+      overflow: auto;
+    }
+    
+    .todo-wrapper {
+      width: 368px;
+      height: 688px;
+      border-radius: 24px;
+      opacity: 0px;
+      background: #ffffff99;
+      margin: 16px 0px 0px 8px;
+      border: 1px solid #ffffff;
+    }
+    
+    .todo-list {
+      width: 332px;
+      height: 100%;
+      gap: 16px;
+    } 
+  }

@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 834px; width: 1194px; }
 body { 
     font-family: Figtree;
     font-size: 16px;
@@ -12,28 +11,37 @@ body {
     --todo-blue: #4094cc;
   }
   
-
   $todoFontcolor: #324755 !important;
-    $globalFontFamily: Figtree !important;
-    $todoFontSize: 16px;
-    $todoFontWeight: 400;
-    $todoFontHeight: 24px;
+  $globalFontFamily: Figtree !important;
+  $todoFontSize: 16px;
+  $todoFontWeight: 400;
+  $todoFontHeight: 24px;
+  $titleFontColor: #ffffff;
+  $titleFontWeight: 19.2px;
+  $titleLetterSpacing: 0.25;
+.light-theme {
+  background: linear-gradient(237.21deg,#eef8ff , #77b7e2);
+}
+.dark-theme {
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #434343,
+    #000000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #ffffff;
+  }
   
-  .light-theme {
-    background: linear-gradient(237.21deg,#eef8ff , #77b7e2);
-  }
-  .dark-theme {
-    background: #000000; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to left,
-      #434343,
-      #000000
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to left,
-      #434343,
-      #000000
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: #ffffff;
-  }
+@media only screen and (min-width: 600px) {
+  html, body { height: 834px; width: 1194px; }
+    }
+
+@media only screen and (max-width: 600px) {
+  html, body { height: 720px; width: 400px;}
+}
   
