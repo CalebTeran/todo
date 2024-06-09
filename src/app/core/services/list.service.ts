@@ -24,15 +24,14 @@ export class ListService {
 
   getAllTodos(): Observable<ITodoListItem[]> {
     return this.db
-      .collection('todos')
+      .collection('todos', ref=>ref.orderBy('createdAt','asc'))
       .snapshotChanges()
       .pipe(
         map(actions => {
           return actions.map(a => {
-            console.log("action ->",a.payload.doc.data())
             const data = a.payload.doc.data() as any;
-            console.log("api call",a.payload.doc.id)
-            return { ...data };
+            const id = a.payload.doc.id;
+            return { id, ...data };
           });
         })
       );
