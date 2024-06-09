@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormControl,
   FormsModule,
@@ -23,11 +23,13 @@ export class CheckInputComponent implements OnInit {
     checkControl: new FormControl<boolean>(true),
   });
 
-  @Input() title: string = '';
+  @Output() addChildTodoItem: EventEmitter<ITodoListItem> = new EventEmitter();
 
   constructor(private listService: ListService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("fatherClicked",this.addChildTodoItem)
+  }
 
   onSubmit(): void {
     const newTodo: ITodoListItem = {
@@ -38,5 +40,9 @@ export class CheckInputComponent implements OnInit {
     this.listService.createTodo(newTodo).then((resp) => {
       console.log('onSubmit todo ->', resp);
     });
+  }
+
+  addChildTodo(): void{
+    
   }
 }

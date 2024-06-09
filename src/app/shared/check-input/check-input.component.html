@@ -22,7 +22,7 @@
           </svg>
         </div>
       </div>
-      <div class="new-todo-item" *ngIf="!title">
+      <div class="new-todo-item">
         <input
           formControlName="inputControl"
           placeholder="Review Figma Design"
@@ -31,11 +31,6 @@
         <div *ngIf="todoForm.controls['inputControl'].valid">
           <button type="submit" class="create-btn-item">Create</button>
         </div>
-      </div>
-      <div *ngIf="title">
-        <input placeholder="Review Figma Design" 
-        formControlName="inputControl"
-        class="input-item" />
       </div>
     </form>
   </div>

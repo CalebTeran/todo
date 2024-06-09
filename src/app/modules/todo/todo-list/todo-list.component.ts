@@ -19,7 +19,6 @@ export class TodoListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.listService.getAllTodos().subscribe((todos) => {
       this.todoList = todos;
-      console.log(todos);
     });
   }
 }

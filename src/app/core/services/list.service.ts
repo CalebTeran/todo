@@ -36,4 +36,30 @@ export class ListService {
         })
       );
   }
+  
+  updateTodo(todo: ITodoListItem): Promise<any>{
+    return this.db.collection('todos').doc(todo.id).update(
+      {
+        'title': todo.title,
+        'completed': todo.completed,
+      }).catch((Error)=>{
+        console.error('update todo error>>', Error);
+        throw new Error('Error: todo not created');
+      })
+  }
+  
+  completeTodo(todo: ITodoListItem): Promise<any>{
+    return this.db.collection('todos').doc(todo.id).update(todo).catch((Error)=>{
+        console.error('update todo error>>', Error);
+        throw new Error('Error: todo not updated');
+      })
+  }
+
+  deleteTodo(id:string): Promise<any>{
+    return this.db.collection('todos').doc(id).delete().catch((Error)=>{
+      console.error('Delete todo error>>', Error);
+      throw new Error('Error: todo not removed');
+    });
+  }
+
 }

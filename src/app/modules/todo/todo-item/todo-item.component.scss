@@ -1,208 +1,225 @@
 @import '../../../../styles.scss';
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 600px) {
 
   .todo-item-container {
-      min-width: 640px;
-      min-height: 56px;
-      box-shadow: 0px 8px 16px 0px #0b476f1f;
-      background: #f5fbfe;
-      padding: 16px 0px 0px 16px;
-      border-radius: 16px;
-      opacity: 0px;
-    }
-    
-    .checked-item {
-    }
-    .todo-text {
-      color: $todoFontcolor;
-      font-family: $globalFontFamily;
-      font-size: $todoFontSize;
-      font-weight: $todoFontWeight;
-      line-height: $todoFontHeight;
-      text-align: left;
-    }
-    .create-btn-item {
-      background-color: var(--todo-blue); /* Green */
-      border: none;
-      color: white;
-      height: 100%;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      font-family: Figtree;
-      font-weight: 400;
-      line-height: 24px;
-    }
-    
-    .checkbox-wrapper {
-      --size: 25px;
-      position: relative;
-    }
-    
-    .checkbox-wrapper *,
-    .checkbox-wrapper *:before,
-    .checkbox-wrapper *:after {
-      box-sizing: border-box;
-    }
-    
-    .checkbox-wrapper .promoted-input-checkbox {
-      border: 0;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    }
-    
-    .checkbox-wrapper input:checked ~ svg {
-      height: calc(var(--size) * 0.6);
-      -webkit-animation: draw-checkbox-28 ease-in-out 0.2s forwards;
-      animation: draw-checkbox-28 ease-in-out 0.2s forwards;
-    }
-    .checkbox-wrapper label:active::after {
-      background-color: #e6e6e6;
-    }
-    .checkbox-wrapper label {
-      color: var(--todo-blue);
-      line-height: var(--size);
-      cursor: pointer;
-      position: relative;
-    }
-    .checkbox-wrapper label:after {
-      content: '';
-      height: var(--size);
-      width: var(--size);
-      margin-right: 8px;
-      float: left;
-      border: 2px solid var(--todo-blue);
-      border-radius: 2px;
-      transition: 0.15s all ease-out;
-    }
-    .checkbox-wrapper svg {
-      stroke: #0080d3;
-      stroke-width: 3px;
-      height: 0;
-      width: calc(var(--size) * 0.6);
-      position: absolute;
-      left: calc(var(--size) * 0.21);
-      top: calc(var(--size) * 0.2);
-      stroke-dasharray: 33;
-    }
+    min-width: 640px;
+    min-height: 56px;
+    box-shadow: 0px 8px 16px 0px #0b476f1f;
+    background: #f5fbfe;
+    padding: 16px 0px 0px 16px;
+    border-radius: 16px;
+    opacity: 0px;
+  }
+
+  .todo-text {
+
+    color: $todoFontcolor;
+    font-family: $globalFontFamily;
+    font-size: $todoFontSize;
+    font-weight: $todoFontWeight;
+    line-height: $todoFontHeight;
+    text-align: left;
+  }
+
+  .create-btn-item {
+    background-color: var(--todo-blue);
+    /* Green */
+    border: none;
+    color: white;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Figtree;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  .checkbox-wrapper {
+    --size: 25px;
+    position: relative;
+  }
+
+  .checkbox-wrapper *,
+  .checkbox-wrapper *:before,
+  .checkbox-wrapper *:after {
+    box-sizing: border-box;
+  }
+
+  .checkbox-wrapper .promoted-input-checkbox {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .checkbox-wrapper input:checked~svg {
+    height: calc(var(--size) * 0.6);
+    -webkit-animation: draw-checkbox-28 ease-in-out 0.2s forwards;
+    animation: draw-checkbox-28 ease-in-out 0.2s forwards;
+  }
+
+  .checkbox-wrapper label:active::after {
+    background-color: #e6e6e6;
+  }
+
+  .checkbox-wrapper label {
+    color: var(--todo-blue);
+    line-height: var(--size);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .checkbox-wrapper label:after {
+    content: '';
+    height: var(--size);
+    width: var(--size);
+    margin-right: 8px;
+    float: left;
+    border: 2px solid var(--todo-blue);
+    border-radius: 2px;
+    transition: 0.15s all ease-out;
+  }
+
+  .checkbox-wrapper svg {
+    stroke: #0080d3;
+    stroke-width: 3px;
+    height: 0;
+    width: calc(var(--size) * 0.6);
+    position: absolute;
+    left: calc(var(--size) * 0.21);
+    top: calc(var(--size) * 0.2);
+    stroke-dasharray: 33;
+  }
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
 
   .todo-item-container {
-      max-width: 332px;
-      min-height: 80px;
-      box-shadow: 0px 8px 16px 0px #0b476f1f;
-      background: #f5fbfe;
-      padding: 16px 0px 0px 16px;
-      border-radius: 16px;
-      opacity: 0px;
-    }
-    
-    .checked-item {
-    }
-    .todo-text {
-      color: $todoFontcolor;
-      font-family: $globalFontFamily;
-      font-size: $todoFontSize;
-      font-weight: $todoFontWeight;
-      line-height: $todoFontHeight;
-      text-align: left;
-    }
-    .create-btn-item {
-      background-color: var(--todo-blue); /* Green */
-      border: none;
-      color: white;
-      height: 100%;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      font-family: Figtree;
-      font-weight: 400;
-      line-height: 24px;
-    }
-    
-    .checkbox-wrapper {
-      --size: 25px;
-      position: relative;
-    }
-    
-    .checkbox-wrapper *,
-    .checkbox-wrapper *:before,
-    .checkbox-wrapper *:after {
-      box-sizing: border-box;
-    }
-    
-    .checkbox-wrapper .promoted-input-checkbox {
-      border: 0;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    }
-    
-    .checkbox-wrapper input:checked ~ svg {
-      height: calc(var(--size) * 0.6);
-      -webkit-animation: draw-checkbox-28 ease-in-out 0.2s forwards;
-      animation: draw-checkbox-28 ease-in-out 0.2s forwards;
-    }
-    .checkbox-wrapper label:active::after {
-      background-color: #e6e6e6;
-    }
-    .checkbox-wrapper label {
-      color: var(--todo-blue);
-      line-height: var(--size);
-      cursor: pointer;
-      position: relative;
-    }
-    .checkbox-wrapper label:after {
-      content: '';
-      height: var(--size);
-      width: var(--size);
-      margin-right: 8px;
-      float: left;
-      border: 2px solid var(--todo-blue);
-      border-radius: 2px;
-      transition: 0.15s all ease-out;
-    }
-    .checkbox-wrapper svg {
-      stroke: #0080d3;
-      stroke-width: 3px;
-      height: 0;
-      width: calc(var(--size) * 0.6);
-      position: absolute;
-      left: calc(var(--size) * 0.21);
-      top: calc(var(--size) * 0.2);
-      stroke-dasharray: 33;
-    }
+    max-width: 332px;
+    min-height: 80px;
+    box-shadow: 0px 8px 16px 0px #0b476f1f;
+    background: #f5fbfe;
+    padding: 16px 0px 0px 16px;
+    border-radius: 16px;
+    opacity: 0px;
+  }
+
+  .todo-text {
+    display: flex;
+    color: $todoFontcolor;
+    font-family: $globalFontFamily;
+    font-size: $todoFontSize;
+    font-weight: $todoFontWeight;
+    line-height: $todoFontHeight;
+    text-align: left;
+  }
+
+  .create-btn-item {
+    background-color: var(--todo-blue);
+    /* Green */
+    border: none;
+    color: white;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Figtree;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .delete-btn-item{
+    left: 285px;
+    bottom: 35px;
+  }
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    outline: 2px solid var(--todo-blue);
+  }
+
+  /* ------------------------------------------------------------------
+    /* On mouse-over, add a grey background color */
+  .todo-text {
+    margin-left: 35px;
+  }
+
+  .todo-text-completed {
+    color: $completedTodoText;
+  }
+
+  .container:hover input~.checkmark {
+    background-color: transparent;
+  }
+
+  .container input:checked~.checkmark {
+    content: "";
+    background-color: transparent;
+  }
+
+  .checkmark:after {
+    color: var(--todo-blue);
+    top: 0px;
+    right: 13px;
+    content: "✔";
+    position: absolute;
+    display: none;
+  }
+
+  .update-btn-item {
+    background-color: var(--todo-blue);
+    border: none;
+    color: white;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Figtree;
+    font-weight: 400;
+    line-height: 12px;
+  }
+
+  .container input:checked~.checkmark:after {
+    display: block;
+  }
+
+  .container .checkmark:after {
+    width: 5px;
+    height: 10px;
+    border-width: 0 3px 3px 0;
+  }
 }
-  
-  @-webkit-keyframes draw-checkbox-28 {
-    0% {
-      stroke-dashoffset: 33;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-  
-  @keyframes draw-checkbox-28 {
-    0% {
-      stroke-dashoffset: 33;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-  

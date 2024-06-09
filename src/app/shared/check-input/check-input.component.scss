@@ -17,6 +17,7 @@
     height: 24px;
     text-align: left;
     border: none;
+    font-size:$todoFontSize;
     background-color: transparent;
   }
   .input-item:focus {
@@ -27,7 +28,8 @@
    display: flex;
   }
   .input-item ::placeholder{
-    color: #32475580;
+    color: $completedTodoText;
+    font-size:$todoFontSize;
   }
   .create-btn-item{
       background-color: var(--todo-blue);

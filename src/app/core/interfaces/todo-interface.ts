@@ -4,16 +4,17 @@ export interface ITodoListItem {
     completed: boolean;
     createdAt: Date;
     completedAt?: Date;
-    subTodos?: ITodoListItem[];
+    subTodos?: Array<ITodoListItem>;
+    childTodo?: IChildTodo[];
   }
   
-  // export interface IChildTodo {
-  //   id?: string;
-  //   fathersIds: Array<string>;
-  //   title: string;
-  //   completed: boolean;
-  //   createdAt: Date;
-  //   completedAt?: Date;
-  //   subTodos?: ITodoListItem[];
-  // }
+  export interface IChildTodo {
+    id?: string;
+    fatherId: string;
+    title: string;
+    completed: boolean;
+    createdAt: Date;
+    completedAt?: Date;
+    childTodo?: IChildTodo[];
+  }
   
