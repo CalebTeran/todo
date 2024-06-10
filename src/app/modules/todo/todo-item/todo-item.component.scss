@@ -101,12 +101,15 @@
 
 @media only screen and (max-width: 600px) {
 
+  .todo{
+    padding-bottom: 25px;
+  }
   .todo-item-container {
     max-width: 332px;
     min-height: 80px;
     box-shadow: 0px 8px 16px 0px #0b476f1f;
     background: #f5fbfe;
-    padding: 16px 0px 0px 16px;
+    padding: 16px 0px 5px 16px;
     border-radius: 16px;
     opacity: 0px;
   }
@@ -135,10 +138,52 @@
     font-weight: 400;
     line-height: 24px;
   }
-  .delete-btn-item{
-    left: 285px;
-    bottom: 35px;
+
+  .expand-button-container{
+    width: 235px;
+    height: 10px;
+    align-content: end;
+    color: var(--todo-blue)
   }
+
+  .todo-info-group {
+    display: inline-flex;
+  }
+
+  .expand-btn-item{
+    color: var(--todo-blue);
+    left: 280px;
+    bottom: 25px;
+  }
+
+  .edit-btn-item {
+    bottom: 2px;
+    color: var(--todo-blue);
+  }
+
+  .update-btn-item {
+    background-color: var(--todo-blue);
+    border: none;
+    color: white;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Figtree;
+    font-weight: 400;
+    line-height: 12px;
+  }
+
+  .second-level {
+    padding-left: 20px;
+    }
+    
+    .third-level {
+    padding-left: 40px;
+  }
+
+  /*Checkbox styles*/
   .container {
     display: block;
     position: relative;
@@ -171,6 +216,7 @@
     outline: 2px solid var(--todo-blue);
   }
 
+
   /* ------------------------------------------------------------------
     /* On mouse-over, add a grey background color */
   .todo-text {
@@ -197,20 +243,6 @@
     content: "✔";
     position: absolute;
     display: none;
-  }
-
-  .update-btn-item {
-    background-color: var(--todo-blue);
-    border: none;
-    color: white;
-    height: 100%;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: Figtree;
-    font-weight: 400;
-    line-height: 12px;
   }
 
   .container input:checked~.checkmark:after {

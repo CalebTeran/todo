@@ -39,18 +39,15 @@ export class ListService {
   
   updateTodo(todo: ITodoListItem): Promise<any>{
     return this.db.collection('todos').doc(todo.id).update(
-      {
-        'title': todo.title,
-        'completed': todo.completed,
-      }).catch((Error)=>{
+      todo).catch((Error)=>{
         console.error('update todo error>>', Error);
-        throw new Error('Error: todo not created');
+        throw new Error('Error: todo not updated');
       })
   }
   
   completeTodo(todo: ITodoListItem): Promise<any>{
     return this.db.collection('todos').doc(todo.id).update(todo).catch((Error)=>{
-        console.error('update todo error>>', Error);
+        console.error('complete todo error>>', Error);
         throw new Error('Error: todo not updated');
       })
   }

@@ -1,0 +1,21 @@
+<div class="input-container">
+    <form>
+      <div class="check-container">
+        <label class="container">
+          <input 
+          type="checkbox" 
+          [checked]="completed"
+          (change)="completed = !completed"
+          [value]="completed"
+          >
+          <span class="checkmark"></span>
+        </label>
+        <div class="todo-text">
+          <span [ngClass]="completed ? 'todo-text-completed':''">
+            {{title}}
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+  

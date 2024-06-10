@@ -1,53 +1,8 @@
 @import "../../../styles.scss";
-
+.todo-text-completed {
+  color: $completedTodoText;
+}
 @media only screen and (min-width: 600px) {
-  .input-container {
-    width: 640px;
-    height: 56px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    border-radius: 16px;
-    border: 1px solid #FFFFFF;
-    opacity: 0px;
-  }
-
-  .input-item {
-    width: 640px;
-    height: 24px;
-    text-align: left;
-    border: none;
-    font-size: $todoFontSize;
-    background-color: transparent;
-  }
-
-  .input-item:focus {
-    outline: 1px solid var(--todo-blue) !important;
-  }
-
-  .new-todo-item {
-    display: flex;
-  }
-
-  .input-item ::placeholder {
-    color: $completedTodoText;
-    font-size: $todoFontSize;
-  }
-
-  .create-btn-item {
-    background-color: var(--todo-blue);
-    border: none;
-    color: white;
-    height: 100%;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: Figtree;
-    font-weight: 400;
-    line-height: 24px;
-  }
-
   .checkbox-wrapper {
     --size: 25px;
     position: relative;
@@ -112,51 +67,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .input-container {
-    width: 332px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    padding-left: 16px;
-    margin-bottom: 16px;
-    border-radius: 16px;
-    border: 1px solid #FFFFFF;
-  }
-
-  .input-item {
-    width: 185px;
-    height: 24px;
-    text-align: left;
-    border: none;
-    background-color: transparent;
-  }
-
-  .input-item:focus {
-    outline: 1px solid var(--todo-blue) !important;
-  }
-
-  .new-todo-item {
-    padding: 0px 0px 10px 35px;
-  }
-
-  .input-item ::placeholder {
-    color: #32475580;
-  }
-
-  .create-btn-item {
-    background-color: var(--todo-blue);
-    border: none;
-    color: white;
-    height: 100%;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: Figtree;
-    font-weight: 400;
-    line-height: 24px;
-  }
-
   /*Checkbox styles*/
   .container {
     display: block;

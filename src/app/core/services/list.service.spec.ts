@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ListService } from './list.service';
+import { ITodoListItem } from '../interfaces/todo-interface';
 
 describe('ListService', () => {
   let service: ListService;
@@ -10,7 +11,10 @@ describe('ListService', () => {
     service = TestBed.inject(ListService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should return a list of todo items', () => {
+    service.getAllTodos().subscribe((todoList)=>{
+      console.log(todoList);
+      expect(todoList).toBeTruthy();
+    })
   });
 });

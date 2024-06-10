@@ -1,26 +1,14 @@
 <div class="input-container">
     <form (ngSubmit)="onSubmit()" [formGroup]="todoForm">
       <div class="check-container">
-        <div class="checkbox-wrapper">
-          <input
-            id="todo-check"
+        <label class="container">
+          <input 
+          id="todo-check"
             type="checkbox"
             formControlName="checkControl"
-            class="promoted-input-checkbox"
-          />
-          <svg><use xlink:href="#checkmark-28" /></svg>
-          <label for="todo-check"></label>
-          <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-            <symbol id="checkmark-28" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-                fill="none"
-                d="M22.9 3.7l-15.2 16.6-6.6-7.1"
-              ></path>
-            </symbol>
-          </svg>
-        </div>
+          >
+          <span class="checkmark"></span>
+        </label>
       </div>
       <div class="new-todo-item">
         <input
@@ -29,7 +17,9 @@
           class="input-item"
         />
         <div *ngIf="todoForm.controls['inputControl'].valid">
-          <button type="submit" class="create-btn-item">Create</button>
+          <div>
+            <button type="submit" class="create-btn-item">Create</button>
+          </div>
         </div>
       </div>
     </form>

@@ -1,14 +1,13 @@
 <div class="todo-list-containner">
+  <app-action-buttons 
+  [todo]="todo"></app-action-buttons>
   <div class="todo-list">
     <div *ngFor="let todo of todoList" class="todo">
-      <app-todo-item [todoItem]="todo"></app-todo-item>
-      <div>{{todo.subTodos}}</div>
-      <!-- <div *ngIf="todo.subTodos">
-         <div *ngFor="let child of todo.subTodos; index as i" class="todo">
-          <div>{{ child[i] }}</div>
-          <app-todo-item [todoItem]="child[i]"></app-todo-item> 
-        </div> 
-      </div> -->
+      <app-todo-item 
+      [todoItem]="todo"
+      (sendTodoSelected)="setTodo($event)"
+      >
+    </app-todo-item>
     </div>
   </div>
 </div>

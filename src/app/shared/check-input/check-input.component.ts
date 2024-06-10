@@ -6,9 +6,11 @@ import {
   Validators,
   FormGroup,
 } from '@angular/forms';
-import { ITodoListItem } from '../../core/interfaces/todo-interface';
+import { IChildTodo, ITodoListItem } from '../../core/interfaces/todo-interface';
 import { ListService } from '../../core/services/list.service';
 import { NgIf } from '@angular/common';
+import { getUniqueId } from '../helpers/uuid-generator-helpers';
+getUniqueId
 
 @Component({
   selector: 'app-check-input',
@@ -18,31 +20,59 @@ import { NgIf } from '@angular/common';
   imports: [FormsModule, ReactiveFormsModule, NgIf],
 })
 export class CheckInputComponent implements OnInit {
-   todoForm: FormGroup = new FormGroup({
+  todoForm: FormGroup = new FormGroup({
     inputControl: new FormControl<string>('', [Validators.required]),
     checkControl: new FormControl<boolean>(true),
   });
+  @Input() todo!: ITodoListItem;
+  @Input() todofather!: ITodoListItem;
 
-  @Output() addChildTodoItem: EventEmitter<ITodoListItem> = new EventEmitter();
+  constructor(private listService: ListService) { }
 
-  constructor(private listService: ListService) {}
-
-  ngOnInit(): void {
-    console.log("fatherClicked",this.addChildTodoItem)
-  }
+  ngOnInit(): void { }
 
   onSubmit(): void {
-    const newTodo: ITodoListItem = {
-      title: this.todoForm.controls['inputControl'].value,
-      completed: this.todoForm.controls['checkControl'].value,
-      createdAt: new Date(),
-    };
-    this.listService.createTodo(newTodo).then((resp) => {
-      console.log('onSubmit todo ->', resp);
-    });
+    if (this.todo) {
+      const childTodo: IChildTodo = {
+        id: getUniqueId(4),
+        fatherId: this.todo.id!,
+        title: this.todoForm.controls['inputControl'].value,
+        completed: this.todoForm.controls['checkControl'].value,
+        createdAt: new Date(),
+      }
+      const todoModified = this.addNewChildToFather(this.todo, childTodo);
+      this.listService.updateTodo(todoModified);
+    } else {
+      const todoItem: ITodoListItem = {
+        title: this.todoForm.controls['inputControl'].value,
+        completed: this.todoForm.controls['checkControl'].value,
+        createdAt: new Date(),
+      };
+      this.listService.createTodo(todoItem);
+    }
+    this.todoForm.reset();
   }
 
-  addChildTodo(): void{
-    
+  addNewChildToFather(fatherTodo: any, child: IChildTodo): ITodoListItem {
+    if (Array.isArray(fatherTodo.childTodo )) {
+      if(fatherTodo.id === child.fatherId){
+        fatherTodo.childTodo.push(child);
+      }else{
+        fatherTodo.childTodo?.forEach((element: { completed: boolean; childTodo: any; }) => {
+          if (element.childTodo?.length > 0 ) {
+            this.addNewChildToFather(element.childTodo[0], child);
+          }else{
+            element.childTodo = []
+            element.childTodo.push(child)
+          }
+        });
+      }
+    }
+    else {
+      fatherTodo.childTodo=[];
+      fatherTodo.childTodo.push(child);
+    }
+    return fatherTodo
   }
+
 }
