@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormControl,
   FormsModule,
@@ -25,7 +25,7 @@ export class CheckInputComponent implements OnInit {
     inputControl: new FormControl<string>('', [Validators.required]),
     checkControl: new FormControl<boolean>(true),
   });
-  @Input() todo!: ITodoListItem;
+  @Input() todo!: any;
   @Input() todofather!: ITodoListItem;
 
   constructor(private sharedService: SharedService, private listService: ListService) { }
@@ -33,39 +33,42 @@ export class CheckInputComponent implements OnInit {
   ngOnInit(): void { }
 
   onSubmit(): void {
-    if (this.todo) {
-      const childTodo: IChildTodo = {
-        id: getUniqueId(4),
-        fatherId: this.todo.id!,
-        title: this.todoForm.controls['inputControl'].value,
-        completed: this.todoForm.controls['checkControl'].value,
-        createdAt: new Date(),
-      }
-      const todoModified = this.addNewChildToFather(this.todo, childTodo);
-      this.listService.updateTodo(todoModified);
-    } else {
-      const todoItem: ITodoListItem = {
-        title: this.todoForm.controls['inputControl'].value,
-        completed: this.todoForm.controls['checkControl'].value,
-        createdAt: new Date(),
-      };
-      this.listService.createTodo(todoItem);
+    if(this.todoForm.valid && this.todoForm.controls['inputControl'].value != null){
+      this.sharedService.todoFather$.subscribe(fatherTodo => {
+        if (fatherTodo.title != "") {
+          const newChildTodo: IChildTodo = {
+            id: getUniqueId(4),
+            fatherId: this.todo.id!,
+            title: this.todoForm.controls['inputControl'].value,
+            completed: this.todoForm.controls['checkControl'].value,
+            createdAt: new Date(),
+          }
+          if(newChildTodo.title != null){
+            this.addNewChildToFather(fatherTodo, newChildTodo, this.todo.id);
+            this.listService.updateTodo(fatherTodo);
+          }
+        } else {
+          const todoItem: ITodoListItem = {
+            title: this.todoForm.controls['inputControl'].value,
+            completed: this.todoForm.controls['checkControl'].value,
+            createdAt: new Date(),
+          };
+          this.listService.createTodo(todoItem);
+        }
+        this.todoForm.reset();
+      })
     }
-    this.sharedService.showBtnGroup(false);
-    this.todoForm.reset();
   }
-
-  addNewChildToFather(fatherTodo: any, child: IChildTodo): ITodoListItem {
-    if (Array.isArray(fatherTodo.childTodo )) {
-      if(fatherTodo.id === child.fatherId){
+  // TODO add recusive function to add unlimited todos if I have time to do it
+    addNewChildToFather(fatherTodo: ITodoListItem, child: IChildTodo, childId:string): ITodoListItem {
+    if (Array.isArray(fatherTodo.childTodo)) {
+      if(childId === fatherTodo.id){
         fatherTodo.childTodo.push(child);
       }else{
-        fatherTodo.childTodo?.forEach((element: { completed: boolean; childTodo: any; }) => {
-          if (element.childTodo?.length > 0 ) {
-            this.addNewChildToFather(element.childTodo[0], child);
-          }else{
-            element.childTodo = []
-            element.childTodo.push(child)
+        fatherTodo.childTodo.forEach(childItem=>{
+          if(child.fatherId === childItem.id){
+            childItem.childTodo=[];
+            childItem.childTodo?.push(child);
           }
         });
       }
@@ -76,5 +79,7 @@ export class CheckInputComponent implements OnInit {
     }
     return fatherTodo
   }
+
+
 
 }

@@ -4,7 +4,6 @@ export interface ITodoListItem {
     completed: boolean;
     createdAt: Date;
     completedAt?: Date;
-    subTodos?: Array<ITodoListItem>;
     childTodo?: IChildTodo[];
   }
   

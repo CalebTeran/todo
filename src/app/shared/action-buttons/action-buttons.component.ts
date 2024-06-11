@@ -19,26 +19,48 @@ import { SharedService } from '../../core/services/shared.service';
   templateUrl: './action-buttons.component.html',
   styleUrl: './action-buttons.component.scss'
 })
-export class ActionButtonsComponent implements OnInit{
-  
+export class ActionButtonsComponent implements OnInit {
+
   showBtns: boolean = false;
   @Input() todo!: ITodoListItem;
 
-  constructor(private listService:ListService, private sharedService: SharedService){}
+  constructor(private listService: ListService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.sharedService.showBtnGroups$.subscribe(show =>{
+    this.sharedService.showBtnGroups$.subscribe(show => {
       this.showBtns = show;
       console.log(show);
     })
   }
 
-  hideButtonGroup():void{
+  hideButtonGroup(): void {
     this.sharedService.showBtnGroup(false);
   }
 
-  removeTodo(id: string): void {
-    this.listService.deleteTodo(id);
-    this.showBtns = false;
+  removeTodo(todoId: string): void {
+    this.sharedService.todoFather$.subscribe(todo => {
+      
+      if(Array.isArray(todo.childTodo)){
+        this.removeChildTodo(todoId!, todo)
+        console.log(todo);
+        this.listService.updateTodo(todo)
+      }else{
+        this.listService.deleteTodo(todoId);
+      }
+    
+      this.showBtns = false;
+    });
+  }
+
+  removeChildTodo(childId: string, todo:ITodoListItem) {
+    if (todo.childTodo && todo.childTodo.length > 0) {
+      todo.childTodo = todo.childTodo.filter(child => {
+        if (child.id === childId) {
+          return false;
+        }
+        this.removeChildTodo(childId,child);
+        return true;
+      });
+    }
   }
 }
