@@ -1,7 +1,9 @@
 <div *ngIf="showBtns" class="overlay-buttons">
     <div>
         <h4>you are editing: {{todo.title}}</h4>
-        <app-check-input [todo]="todo"></app-check-input>
+        <div class="add-input">
+            <app-check-input [todo]="todo"></app-check-input>
+        </div>
         <button (click)="hideButtonGroup()" mat-icon-button type="submit" class="add-btn-item">
             <mat-icon class="cancel-icon">cancel</mat-icon>
         </button>

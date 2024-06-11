@@ -10,6 +10,7 @@ import { IChildTodo, ITodoListItem } from '../../core/interfaces/todo-interface'
 import { ListService } from '../../core/services/list.service';
 import { NgIf } from '@angular/common';
 import { getUniqueId } from '../helpers/uuid-generator-helpers';
+import { SharedService } from '../../core/services/shared.service';
 getUniqueId
 
 @Component({
@@ -27,7 +28,7 @@ export class CheckInputComponent implements OnInit {
   @Input() todo!: ITodoListItem;
   @Input() todofather!: ITodoListItem;
 
-  constructor(private listService: ListService) { }
+  constructor(private sharedService: SharedService, private listService: ListService) { }
 
   ngOnInit(): void { }
 
@@ -50,6 +51,7 @@ export class CheckInputComponent implements OnInit {
       };
       this.listService.createTodo(todoItem);
     }
+    this.sharedService.showBtnGroup(false);
     this.todoForm.reset();
   }
 

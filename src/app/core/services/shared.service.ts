@@ -16,6 +16,10 @@ export class SharedService {
   });
   todoFather$: Observable<ITodoListItem|IChildTodo> = this._todoFather.asObservable();
 
+  private _todoList: BehaviorSubject<ITodoListItem[] > = new BehaviorSubject<ITodoListItem[]>([]);
+  todoList$: Observable<ITodoListItem[]> = this._todoList.asObservable();
+
+
   constructor() { }
  
   showBtnGroup(newValue: boolean) {
@@ -24,6 +28,10 @@ export class SharedService {
 
   setFatherTodo(todoFather: ITodoListItem|IChildTodo){
     this._todoFather.next(todoFather);
+  }
+
+  setTodoList(todoList:ITodoListItem[]){
+    this._todoList.next(todoList);
   }
 
 }

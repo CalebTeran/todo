@@ -1,16 +1,17 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { IChildTodo, ITodoListItem } from '../../../core/interfaces/todo-interface';
-import { ListService } from '../../../core/services/list.service';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { NgFor, NgIf } from '@angular/common';
 import { ActionButtonsComponent } from '../../../shared/action-buttons/action-buttons.component';
+import { SortDropdownComponent } from '../../../shared/sort-dropdown/sort-dropdown.component';
+import { SharedService } from '../../../core/services/shared.service';
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
-  imports: [TodoItemComponent, NgFor, NgIf, ActionButtonsComponent],
+  imports: [TodoItemComponent, NgFor, NgIf, ActionButtonsComponent, SortDropdownComponent],
 })
 export class TodoListComponent implements OnInit, AfterViewInit {
   todoList: Array<ITodoListItem> = [];
@@ -20,15 +21,14 @@ export class TodoListComponent implements OnInit, AfterViewInit {
     completed: false,
     createdAt: new Date(),
   }
-  constructor(private listService: ListService) {}
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.listService.getAllTodos().subscribe((todos) => {
-      console.log(todos);
+    this.sharedService.todoList$.subscribe(todos =>{
       this.todoList = todos;
-    });
+    })
   }
 
   setShowActionsBtn(show: boolean): void{

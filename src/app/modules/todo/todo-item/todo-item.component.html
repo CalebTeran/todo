@@ -1,29 +1,32 @@
 <div class="todo-item-container">
-  <form [formGroup]="todoForm">
-    <div>
-      <div class="expand-button-container">
-        <button mat-icon-button (click)="collapseItems = !collapseItems" type="submit" class="expand-btn-item">
-          <mat-icon *ngIf="!collapseItems">expand_less</mat-icon>
-          <mat-icon *ngIf="collapseItems">expand_more</mat-icon>
+  <div>
+    <div class="expand-button-container">
+      <button mat-icon-button (click)="collapseItems = !collapseItems" type="submit" class="expand-btn-item">
+        <mat-icon *ngIf="!collapseItems">expand_less</mat-icon>
+        <mat-icon *ngIf="collapseItems">expand_more</mat-icon>
+      </button>
+    </div>
+    <div class="check-container">
+      <div class="todo-info-group">
+        <div (click)="showAddInput = !showAddInput;">
+          <app-check [title]="todoItem.title" [completed]="todoItem.completed"></app-check>
+        </div>
+        <button mat-icon-button (click)="onEditItem(todoItem, todoItem)" type="submit" class="edit-btn-item">
+          <mat-icon class="edit-icon">edit</mat-icon>
         </button>
       </div>
-      <div class="check-container">
-        <div>
-          <label class="container">
-            <input type="checkbox" [checked]="todoItem.completed"
-              (change)="todoItem.completed = !todoItem.completed; isTodoEdited = !isTodoEdited"
-              (click)="completeTodo(todoItem)" [value]="todoItem.completed">
-            <span class="checkmark"></span>
-          </label>
+      <div *ngIf="showAddInput">
+        <div class="todo-info-group">
+          <form (ngSubmit)="onSubmit()" [formGroup]="todoForm">
+            <input formControlName="inputControl" [placeholder]="todoItem.title" class="input-item" />
+            <button mat-icon-button type="submit" class="edit-btn-item">
+              <mat-icon class="update-icon">✔</mat-icon>
+            </button>
+            <button mat-icon-button (click)="showAddInput = false" style="color: red;">
+              <mat-icon class="cancel-icon">cancel</mat-icon>
+            </button>
+          </form>
         </div>
-      </div>
-      <div *ngIf="!isTodoEdited" class="todo-text">
-        <span [ngClass]="todoItem.completed ? 'todo-text-completed':''">
-          {{todoItem.title}}
-        </span>
-      <button mat-icon-button (click)="onEditItem(todoItem)" type="submit" class="edit-btn-item">
-        <mat-icon class="edit-icon">edit</mat-icon>
-      </button>
       </div>
     </div>
     <!-- Second level todo items -->
@@ -46,9 +49,9 @@
               <div class="check-container">
                 <div class="todo-info-group">
                   <app-check [title]="child3.title" [completed]="child3.completed"></app-check>
-                <button mat-icon-button (click)="onEditItem(child3, todoItem)" type="submit" class="edit-btn-item">
-                  <mat-icon class="edit-icon">edit</mat-icon>
-                </button>
+                  <button mat-icon-button (click)="onEditItem(child3, todoItem)" type="submit" class="edit-btn-item">
+                    <mat-icon class="edit-icon">edit</mat-icon>
+                  </button>
                 </div>
               </div>
             </div>
@@ -56,5 +59,4 @@
         </div>
       </div>
     </div>
-  </form>
-</div>
+  </div>

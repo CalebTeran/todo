@@ -47,23 +47,22 @@ export class TodoItemComponent implements OnInit {
 
   isTodoEdited: Boolean = false;
   completedTodo: Array<object> = [];
-  showDeleteBtn: Boolean = false;
   showAddInput: Boolean = false;
   showBtnActions: Boolean = false;
   collapseItems: Boolean = false;
-
+  todoSelected: ITodoListItem ={
+    title: '',
+    completed: false,
+    createdAt: new Date(),
+  } 
   constructor(private listService: ListService,private sharedService: SharedService,) { }
   ngOnInit(): void {
   }
 
-  onSubmit(updatedTodo: ITodoListItem): void {
-    updatedTodo = {
-      id: updatedTodo.id,
-      title: this.todoForm.controls['inputControl'].value,
-      completed: updatedTodo.completed,
-      createdAt: updatedTodo.completedAt ? updatedTodo.completedAt : new Date()
-    };
-    this.listService.updateTodo(updatedTodo);
+  onSubmit(): void {
+    this.todoItem.title = this.todoForm.controls['inputControl'].value;
+    this.listService.updateTodo(this.todoItem);
+    this.showAddInput = false;
   }
 
   completeTodo(todoToComplete: ITodoListItem): void {

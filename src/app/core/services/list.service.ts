@@ -58,5 +58,18 @@ export class ListService {
       throw new Error('Error: todo not removed');
     });
   }
-
+  orderByTodos(filter: string): Observable<ITodoListItem[]>{
+    return this.db
+    .collection('todos', ref=>ref.orderBy(filter,'asc'))
+    .snapshotChanges()
+    .pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as any;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+  }
 }

@@ -1,0 +1,11 @@
+<div style="height: 50px; display: flex; align-items: center; justify-content: right;">
+    <h4>Sort items by:</h4>
+    <mat-form-field>
+      <mat-label>Default: by Date</mat-label>
+      <mat-select (selectionChange)="onFilterChanged($event)">
+        <mat-option selected value="createdAt">Date</mat-option>
+        <mat-option value="completed">Completed</mat-option>
+        <mat-option value="title">Alphabetical</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
