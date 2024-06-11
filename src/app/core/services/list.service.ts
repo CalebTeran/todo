@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ITodoListItem } from '../interfaces/todo-interface';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Injectable({

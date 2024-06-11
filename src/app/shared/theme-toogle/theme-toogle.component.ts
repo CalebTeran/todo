@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./theme-toogle.component.scss'],
 })
 export class ThemeToogleComponent {
+    // TODO Use material Theme is a better solution but That means to make a palette color, define theme, mixins.
   isDarkMode: boolean;
 
   constructor(private themeService: ThemeService) {
