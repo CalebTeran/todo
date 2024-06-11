@@ -15,6 +15,15 @@
     border-radius: 16px;
     opacity: 0px;
   }
+  .todo-item-container-completed {
+    min-width: 640px;
+    min-height: 56px;
+    box-shadow: 0px 8px 16px 0px #0b476f1f;
+    background: transparent;
+    padding: 16px 0px 0px 16px;
+    border-radius: 16px;
+    opacity: 0px;
+  }
 
   .todo-text {
 
@@ -75,6 +84,17 @@
     padding: 16px;
     border-radius: 16px;
     opacity: 0px;
+  }
+
+  .todo-item-container-completed {
+    max-width: 332px;
+    min-height: 80px;
+    box-shadow: 0px 8px 16px 0px #0b476f1f;
+    background: transparent;
+    padding: 16px;
+    border-radius: 16px;
+    opacity: 0px;
+    border: 1px solid #FFFFFF;
   }
 
   .todo-text {

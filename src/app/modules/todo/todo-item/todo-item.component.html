@@ -1,4 +1,4 @@
-<div class="todo-item-container">
+<div [ngClass]="mainComplete ? 'todo-item-container-completed' : 'todo-item-container'">
   <div>
     <div class="expand-button-container">
       <button mat-icon-button (click)="collapseItems = !collapseItems" type="submit" class="expand-btn-item">
@@ -8,8 +8,8 @@
     </div>
     <div class="check-container">
       <div class="todo-info-group">
-        <div (click)="showAddInput = !showAddInput;">
-          <app-check [title]="todoItem.title" [completed]="todoItem.completed"></app-check>
+        <div (click)="showAddInput = !showAddInput; setFatherToComplete(todoItem)">
+          <app-check [isMainTodo]="true" [title]="todoItem.title" [completed]="todoItem.completed"></app-check>
         </div>
         <button mat-icon-button (click)="onEditItem(todoItem, todoItem)" type="submit" class="edit-btn-item">
           <mat-icon class="edit-icon">edit</mat-icon>

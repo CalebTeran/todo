@@ -5,7 +5,7 @@
           <input 
           type="checkbox" 
           [checked]="completed"
-          (change)="completed = !completed"
+          (change)="completed = !completed; completeTodo();"
           [value]="completed"
           >
           <span class="checkmark"></span>

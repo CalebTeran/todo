@@ -16,8 +16,15 @@ export class SharedService {
   });
   todoFather$: Observable<ITodoListItem|IChildTodo> = this._todoFather.asObservable();
 
-  private _todoList: BehaviorSubject<ITodoListItem[] > = new BehaviorSubject<ITodoListItem[]>([]);
+  private _todoList: BehaviorSubject<ITodoListItem[]> = new BehaviorSubject<ITodoListItem[]>([]);
   todoList$: Observable<ITodoListItem[]> = this._todoList.asObservable();
+
+  private _fatherToComplete: BehaviorSubject<ITodoListItem> = new BehaviorSubject<ITodoListItem>({
+    title:"",
+    completed: false,
+    createdAt: new Date(),
+  });
+  fatherToComplete$: Observable<ITodoListItem> = this._fatherToComplete.asObservable();
 
 
   constructor() { }
@@ -30,6 +37,10 @@ export class SharedService {
     this._todoFather.next(todoFather);
   }
 
+  setFatherToComplete(todoFather: ITodoListItem|IChildTodo){
+    this._fatherToComplete.next(todoFather);
+  }
+  
   setTodoList(todoList:ITodoListItem[]){
     this._todoList.next(todoList);
   }

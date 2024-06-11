@@ -50,13 +50,16 @@ export class TodoItemComponent implements OnInit {
   showAddInput: Boolean = false;
   showBtnActions: Boolean = false;
   collapseItems: Boolean = false;
+  mainComplete: Boolean = false;
   todoSelected: ITodoListItem ={
     title: '',
     completed: false,
     createdAt: new Date(),
   } 
   constructor(private listService: ListService,private sharedService: SharedService,) { }
+  
   ngOnInit(): void {
+    this.mainComplete = this.todoItem.completed;
   }
 
   onSubmit(): void {
@@ -65,23 +68,9 @@ export class TodoItemComponent implements OnInit {
     this.showAddInput = false;
   }
 
-  completeTodo(todoToComplete: ITodoListItem): void {
-    this.todoItem.completed = !this.todoItem.completed;
-    this.isTodoEdited = !this.isTodoEdited
-    const todoModified = this.completeOtResetTodo(todoToComplete, todoToComplete.completed);
-    console.log("todo modified ->", todoModified);
-    this.listService.completeTodo(todoModified);
-  }
-
-  completeOtResetTodo(todo: any, completeOrReset: boolean): ITodoListItem {
-    todo.completed = completeOrReset;
-    todo.childTodo?.forEach((element: { completed: boolean; childTodo: any; }) => {
-      element.completed = completeOrReset;
-      if (element.childTodo?.length > 0) {
-        this.completeOtResetTodo(element.childTodo[0], completeOrReset);
-      }
-    });
-    return todo
+  setFatherToComplete(todoFather: ITodoListItem): void{
+    this.sharedService.setFatherToComplete(todoFather!);
+    this.mainComplete = this.mainComplete
   }
 
   onEditItem(todo: ITodoListItem | IChildTodo, todoFather?: ITodoListItem | IChildTodo){
