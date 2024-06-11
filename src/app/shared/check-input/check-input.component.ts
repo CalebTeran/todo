@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   FormControl,
   FormsModule,
@@ -20,7 +20,7 @@ getUniqueId
   templateUrl: './check-input.component.html',
   imports: [FormsModule, ReactiveFormsModule, NgIf],
 })
-export class CheckInputComponent implements OnInit {
+export class CheckInputComponent {
   todoForm: FormGroup = new FormGroup({
     inputControl: new FormControl<string>('', [Validators.required]),
     checkControl: new FormControl<boolean>(true),
@@ -30,7 +30,6 @@ export class CheckInputComponent implements OnInit {
 
   constructor(private sharedService: SharedService, private listService: ListService) { }
 
-  ngOnInit(): void { }
 
   onSubmit(): void {
     if(this.todoForm.valid && this.todoForm.controls['inputControl'].value != null){

@@ -16,7 +16,7 @@ import { ListService } from '../../core/services/list.service';
 })
 
 export class SortDropdownComponent implements OnInit {
-  constructor (private sharedService: SharedService, private listService:ListService ) {}
+  constructor (private sharedService: SharedService, private listService:ListService) {}
 
   ngOnInit(): void {
     this.listService.getAllTodos().subscribe(todos =>{
