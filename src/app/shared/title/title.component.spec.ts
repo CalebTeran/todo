@@ -20,4 +20,22 @@ describe('TitleComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  it('should initialize with an empty title', () => {
+    expect(component.title).toEqual('');
+  });
+  
+  it('should set title correctly', () => {
+    const testTitle = 'Test Title';
+    component.title = testTitle;
+    expect(component.title).toEqual(testTitle);
+  });
+
+  it('should receive the input value and set on the HTML', () => {
+    const inputValue = 'Test Title';
+    component.title = inputValue;
+    fixture.detectChanges();
+    const titleElement = fixture.nativeElement.querySelector('.title'); // Assuming you have a class named 'title' in your component template
+    expect(titleElement.textContent).toContain(inputValue);
+  });
 });

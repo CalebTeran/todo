@@ -5,7 +5,7 @@ import { firebaseConfig } from './enviroments/enviroment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), provideFirebaseApp(() => 
     initializeApp(firebaseConfig)), 
     provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule,
     { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },
     provideAnimations(),
   ]
